@@ -22,3 +22,10 @@ const phoneNumber=document.querySelector('#tel');
             numberError.textContent="";
             else numberError.textContent="Phone number is Incorrect!";
         });
+const save = () => {
+    try{
+        let addressBookData = createAddressBook();
+    }catch (e){
+        return;
+        }
+    }
