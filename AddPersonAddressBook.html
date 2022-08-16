@@ -25,10 +25,12 @@
             <div class="row-content">
                 <label class="label text" for="name"></label>
                 <input class="input" type="text" id="name" name="name" placeholder="Your Full Name....." required>
+                <error-output class="name-error" for="name"></error-output>
             </div>
             <div class="row-content">
                 <label class="label text" for="Address"></label>
                 <input class="input" type="text" id="address" name="address" placeholder="Address....." required>
+                <error-output class="address-error" for="Address"></error-output>
             </div>
             <div class="row-content">
                 <label class="label text" for="selectCity"></label>
@@ -96,8 +98,9 @@
                 <input class="input" type="number" id="ZipCode" name="ZipCode" placeholder="Zip Code....." required>
             </div>
             <div class="row-content">
-                <label class="label text" for="PhoneNumber"></label>
-                <input class="input" type="number" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" required>
+                <label class="label text" for="tel"></label>
+                <input class="input" type="tel" id="tel" name="tel" placeholder="Phone Number" required>
+                <error-output class="number-error" for="tel"></error-output>
             </div>
             <div class="buttonParent">
                 <div class="Add-reset">
@@ -107,5 +110,6 @@
             </div>
         </form>
     </div>
+    <script src="AddressBook.js"></script>
 </body>
 </html>
