@@ -1,3 +1,5 @@
+let isUpdate = false;
+let addressBookObj = {};
 window.addEventListener('DOMContentLoaded', (event) => {
 const name=document.querySelector('#name');
     const nameError=document.querySelector('.name-error');
@@ -23,6 +25,7 @@ const phoneNumber=document.querySelector('#phone');
             numberError.textContent="";
             else numberError.textContent="Phone number is Incorrect!";
         });
+        checkForUpdate();
     });
 const save = () => {
     try{
@@ -80,6 +83,14 @@ const save = () => {
         });
         return setItems;
     }
+    const setForm = () => {
+        setValue('#name', addressBookObj._name);
+        setValue('#address', addressBookObj._address);
+        setValue('#city', addressBookObj._city);
+        setValue('#state', addressBookObj._state);
+        setValue('#zip', addressBookObj._zip);
+        setValue('#phone', addressBookObj._phoneNumber);
+    }
     const resetForm = () =>{
         setValue("#name", "");
         setValue("#address", "");
@@ -92,4 +103,11 @@ const save = () => {
         const element = document.querySelector(id);
         element.value = value;
     } 
+    const checkForUpdate = () => {
+        const addressBookJson = localStorage.getItem('editBook');
+        isUpdate = addressBookJson ? true : false;
+        if (!isUpdate) return;
+        addressBookObj = JSON.parse(addressBookJson);
+        setForm();
+    }
     

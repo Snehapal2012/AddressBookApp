@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded',(even) => {
     addressBookList = getAddressBookDataFromStorage();
     document.querySelector(".person-count").textContent = addressBookList.length;
     createInnerHtml();
+    localStorage.removeItem('editBook');
     });
     const getAddressBookDataFromStorage = () => {
         return localStorage.getItem('AddressBookList') ?
@@ -25,7 +26,7 @@ window.addEventListener('DOMContentLoaded',(even) => {
             <td>${addressBookData._phoneNumber}</td>
             <td>
             <img id="${addressBookData._name}" onclick="remove(this)" alt="delete" src="delete-black-18dp.svg">
-            <img name="${addressBookData._name}" onclick="update(this)" alt="edit" src="create-black-18dp.svg">
+            <img id="${addressBookData._name}" onclick="update(this)" alt="edit" src="create-black-18dp.svg">
             </td>
          </tr>
         `;
@@ -43,3 +44,13 @@ window.addEventListener('DOMContentLoaded',(even) => {
         document.querySelector(".person-count").textContent=addressBookList.length;
         createInnerHtml();
     } 
+    const update = (node) => {
+        let addressBookData = addressBookList.find(personData => personData._name == node.id);
+        if(!addressBookData) return;
+        localStorage.setItem('editBook', JSON.stringify(addressBookData));
+        window.location.replace(site_properties.add_person_page);
+    } 
+    let site_properties={
+        home_page: "home.html",
+        add_person_page: "AddPersonAddressBook.html"
+    };
